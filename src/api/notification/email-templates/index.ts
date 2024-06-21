@@ -13,6 +13,10 @@ import * as fs from 'fs'
 import * as Handlebars from 'handlebars'
 import { join } from 'path'
 
+Handlebars.registerHelper('formatName', (name) => {
+  return name ? ` ${name}` : ''
+})
+
 const readBirthTemplate = <T extends Record<string, string>>(
   templateName: string
 ) =>
