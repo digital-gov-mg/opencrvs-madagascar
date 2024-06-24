@@ -11,6 +11,11 @@
   tasks:
     - name: Create MongoDB replicate key file locally
       local_action: shell openssl rand -base64 755 > /tmp/mongodb-keyfile
+    - name: Set permissions for SSH private key
+      ansible.builtin.file:
+        path: /home/runner/.ssh/id_rsa
+        state: file
+        mode: '0600'
 
 - hosts: all
   become: yes
@@ -34,7 +39,7 @@
 
 - hosts: docker-manager-first, docker-workers
   become: yes
-  become_method: sudo  
+  become_method: sudo
   vars:
     crontab_user: root
   tasks:
