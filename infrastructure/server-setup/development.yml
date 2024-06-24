@@ -19,6 +19,8 @@ docker-manager-first:
   hosts:
     siecm-latest:
       ansible_host: '15.237.132.6'
+      # ansible_ssh_private_key_file: /.ssh/provision
+      ansible_ssh_common_args: '-o UserKnownHostsFile=/home/jean/Documents/opencrvs/country/opencrvs-madagascar/infrastructure/known-hosts'
       data_label: data1
 
 # Development servers are not configured to use workers.
