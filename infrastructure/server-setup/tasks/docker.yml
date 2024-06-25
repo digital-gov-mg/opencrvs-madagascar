@@ -1,8 +1,4 @@
-# - name: 'Add docker repository key'
-#   apt_key:
-#     url: https://download.docker.com/linux/ubuntu/gpg
-#     state: present
-- name: 'Install prerequisites for Docker repository'
+- name: Install prerequisites for Docker repository
   apt:
     pkg:
       - apt-transport-https
@@ -11,11 +7,10 @@
       - gnupg2
       - software-properties-common
 
-- name: 'Add Docker repository key using curl and apt-key'
-  command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-  args:
-    warn: false
-  shell: /bin/bash
+- name: 'Add docker repository key'
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
 
 - name: 'Add docker repository'
   apt_repository:
