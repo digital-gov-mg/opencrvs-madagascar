@@ -41,10 +41,15 @@
 #     url: https://download.docker.com/linux/ubuntu/gpg
 #     state: present
 
-- name: Add Docker GPG apt Key
-  ansible.builtin.apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+# - name: Add Docker GPG apt Key
+#   ansible.builtin.apt_key:
+#     url: https://download.docker.com/linux/ubuntu/gpg
+#     state: present
+
+- name: Download and add Docker GPG key
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  args:
+    warn: false
 
 - name: 'Add docker repository'
   apt_repository:
