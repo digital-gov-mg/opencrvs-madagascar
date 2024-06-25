@@ -15,6 +15,7 @@
   command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
   args:
     warn: false
+  shell: /bin/bash
 
 - name: 'Add docker repository'
   apt_repository:
