@@ -2,14 +2,18 @@
 #   apt_key:
 #     url: https://download.docker.com/linux/ubuntu/gpg
 #     state: present
-- name: Download Docker GPG key
-  get_url:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    dest: /tmp/docker.gpg
+- name: 'Install prerequisites for Docker repository'
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
 
-- name: Add Docker repository key
+- name: 'Add docker repository key'
   apt_key:
-    file: /tmp/docker.gpg
+    url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
 - name: 'Add docker repository'
