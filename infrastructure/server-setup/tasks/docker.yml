@@ -64,7 +64,7 @@
 
 - name: 'Log into DockerHub'
   docker_login:
-    registry_url: registry.gitlab.com
+    registry: registry.gitlab.com
     username: '{{dockerhub_username}}'
     password: '{{dockerhub_password}}'
 
