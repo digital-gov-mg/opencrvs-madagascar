@@ -1,14 +1,48 @@
-- name: Install prerequisites for Docker repository
-  apt:
-    pkg:
+# - name: Install prerequisites for Docker repository
+#   apt:
+#     pkg:
+#       - apt-transport-https
+#       - ca-certificates
+#       - curl
+#       - gnupg2
+#       - software-properties-common
+#       - python3-pip
+#       - virtualenv
+#       - python3-setuptools
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    name:
+      - net-tools
       - apt-transport-https
       - ca-certificates
       - curl
-      - gnupg2
       - software-properties-common
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+      - gnupg-agent
+      - gnupg2
+      - autoconf
+      - dpkg-dev
+      - file
+      - g++
+      - gcc
+      - libc-dev
+      - make
+      - pkg-config
+      - re2c
+      - wget
+    state: present
+    update_cache: true
 
-- name: 'Add docker repository key'
-  apt_key:
+# - name: 'Add docker repository key'
+#   apt_key:
+#     url: https://download.docker.com/linux/ubuntu/gpg
+#     state: present
+
+- name: Add Docker GPG apt Key
+  ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
