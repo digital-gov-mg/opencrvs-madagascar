@@ -2,6 +2,15 @@
 #   apt_key:
 #     url: https://download.docker.com/linux/ubuntu/gpg
 #     state: present
+- name: 'Install prerequisites for Docker repository'
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+
 - name: 'Add Docker repository key using curl and apt-key'
   command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
   args:
